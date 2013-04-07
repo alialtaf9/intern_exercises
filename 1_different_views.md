@@ -16,6 +16,7 @@ Ruby
 Write a REST API using Rails to support simple chat service. 
 
 Requirements:
+```
   POST /users
     Parameters: 
       user[name] - user name
@@ -43,10 +44,11 @@ Requirements:
           text: 'This is a message'
         }
       ]
-
+```
 Node
 ----
 Create a chat application on node.js using socket.io. It should support the following:
+
 1. Joining a to the chat service with a name
   'register_name' with data in JSON format { name: 'Tom' }
   responses (listened on client side):
@@ -57,4 +59,5 @@ Create a chat application on node.js using socket.io. It should support the foll
 
 Browser
 -------
-Create one page chat. It would have two split window with message entry input box and textarea where the messages posted (through pressing enter after typing a message in message entry input box). When message is entered it is 'sent'. It should then appear in the both 'posted messages' boxes.
+Create one page chat. It should have two split window with message entry input box and textarea where the messages posted (through pressing enter after typing a message in message entry input box). 
+When message is entered it is 'sent'. It should then appear in the both 'posted messages' boxes.
