@@ -18,10 +18,10 @@ Write a REST API using Rails to support simple chat service.
 Requirements:
   POST /users
     Parameters: 
-      name - user name
+      user[name] - user name
     Response:
       201 Created, if the username was not taken and creation succeeded. Response body would have {user_id: 1} with 1 being the user id of the created user. Subsequent requests that require user id will accept that id.
-      406 Not Acceptable, if creation was unsuccessful. Response body empty.
+      422 Not Acceptable, if creation was unsuccessful. Response body empty.
   
   POST /messages
     Parameters: 
