@@ -1,3 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'httparty'
+gem 'minitest'
+gem 'minitest-reporters'
