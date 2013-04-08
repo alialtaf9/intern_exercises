@@ -3,3 +3,9 @@ source 'https://rubygems.org'
 gem 'httparty'
 gem 'minitest'
 gem 'minitest-reporters'
+
+group :development do
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'rb-fsevent'
+end

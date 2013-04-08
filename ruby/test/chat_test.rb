@@ -66,6 +66,16 @@ describe 'Chat REST API' do
       HTTParty.post "#{api_base_address}/users", example_user_query_data(name)
       response = HTTParty.post "#{api_base_address}/messages", example_message_query(name, nil)
       response.code.must_equal 422
+    end
+  end
+
+  describe 'getting previous messages' do
+    it 'returns all messages by default' do
+      name = unique_user_name
+      HTTParty.post "#{api_base_address}/users", example_user_query_data(name)
+      10.times do |count|
+        HTTParty.post "#{api_base_address}/messages", example_message_query(name, "Zat is a message #{count}")
+      end
 
     end
   end
