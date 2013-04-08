@@ -34,3 +34,5 @@ describe 'node-chat', ->
           message.text.should.equal 'Who left the cats out?'
           done()
 
+  it 'does not send messages for non-registered client'
+  it 'only sends out messages for registered clients'
