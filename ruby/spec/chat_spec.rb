@@ -77,6 +77,8 @@ describe 'Chat REST API' do
         HTTParty.post "#{api_base_address}/messages", example_message_query(name, "Zat is a message #{count}")
       end
 
+      response = HTTParty.get "#{api_base_address}/messages"
+      JSON.parse(response.body).length.must_be :>=, 10
     end
   end
 end
