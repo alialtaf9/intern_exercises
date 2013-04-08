@@ -55,7 +55,7 @@ Create a chat application on node.js using socket.io. It should support the foll
   'register_name:response' with data in form: { result: 'success', name: 'Tom'} in case of success or { result: 'failure', reason: 'Name taken'}. The contents of reason property in error response are not predefined but the property itself should be present and explain the error.
 2. Posting messages to the chat service
   'post_message' with data { name: 'Tom', text: 'Hello!' }
-3. Client should be able to receive messages from other chat participants through listening for 'incoming_message'. It would have data in the format of { name: 'Paul', text: 'Wadup.'}
+3. Client should be able to receive messages from other chat participants through listening for 'new_message'. It would have data in the format of { name: 'Paul', text: 'Wadup.'}
 
 Browser
 -------
