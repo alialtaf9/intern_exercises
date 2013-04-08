@@ -53,7 +53,16 @@ describe 'Chat REST API' do
       HTTParty.post "#{api_base_address}/users", example_user_query_data(name)
       response = HTTParty.post "#{api_base_address}/messages", example_message_query(name, 'Hello!')
       response.code.must_equal 201
+    end
 
+    it 'returns message JSON when succeeding' do
+      name = unique_user_name
+      HTTParty.post "#{api_base_address}/users", example_user_query_data(name)
+      response = HTTParty.post "#{api_base_address}/messages", example_message_query(name, 'Hello!')
+      parsed_response = JSON.parse(response.body)
+      ['id', 'user_id', 'text'].each do |required_key|
+        parsed_response.has_key?(required_key).must_equal true, "Expected parsed response JSON to contain #{required_key}"
+      end
     end
 
     it 'fails when message is sent without username' do
@@ -79,6 +88,26 @@ describe 'Chat REST API' do
 
       response = HTTParty.get "#{api_base_address}/messages"
       JSON.parse(response.body).length.must_be :>=, 10
+    end
+
+    it 'provides messages after specified by last_message' do
+      # Create user
+      name = unique_user_name
+      HTTParty.post "#{api_base_address}/users", example_user_query_data(name)
+      # 1. Post a message
+      first_message_response = HTTParty.post "#{api_base_address}/messages", example_message_query(name, "What a nice first message")
+      first_json = JSON.parse first_message_response.body
+      # 3. Post another message
+      last_post_response = HTTParty.post "#{api_base_address}/messages", example_message_query(name, "Second message is second")
+      # 4. Get list of messages after the last message in 2.
+      messages_after_first = HTTParty.get "#{api_base_address}/messages", {
+        body: {
+          last_message: first_json['id']
+        }
+      }
+      # 5. Verify that 4. has the same message posted in 3. 
+      after_first = JSON.parse messages_after_first
+      after_first.length.must_equal 1
     end
   end
 end
