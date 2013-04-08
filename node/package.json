@@ -1,0 +1,20 @@
+{
+  "name": "node-chat-test",
+  "description": "Tests for Node version of the chat app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "sinon": "latest",
+    "request": ">=2.12",
+    "commander": ">=1.0.5",
+    "request": "latest",
+    "redis-mock": "latest",
+    "socket.io-client": "latest",
+    "redis": "latest",
+    "coffee-script": ">=1.4",
+    "async": "latest",
+    "underscore": "latest"
+  }
+}
